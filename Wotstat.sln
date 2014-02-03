@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Model", "sources\Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wotstat.Application", "sources\Wotstat.Application\Wotstat.Application.csproj", "{C95B3522-021F-4BDF-AF08-120A5D4C4A68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wotstat", "Wotstat\Wotstat.csproj", "{707F9BB3-DA8B-4166-96E0-361312527F79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wotstat", "sources\Wotstat\Wotstat.csproj", "{707F9BB3-DA8B-4166-96E0-361312527F79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler", "Crawler\Crawler.csproj", "{7C93FAB3-D223-4D67-9A65-405B68FE6A5C}"
 EndProject
