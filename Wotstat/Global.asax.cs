@@ -1,23 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-
-namespace Wotstat
+﻿namespace Wotstat
 {
-    public class MvcApplication : System.Web.HttpApplication
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using Infrastructure.BootstrapperTasks;
+    using MvcExtensions;
+    using MvcExtensions.Windsor;
+
+    public class MvcApplication : WindsorMvcApplication
     {
-        protected void Application_Start()
+        public MvcApplication()
+        {
+            Bootstrapper.BootstrapperTasks
+                .Include<RegisterModelMetadata>()
+                .Include<RegisterControllers>()
+                .Include<RegisterRoutes>()
+                .Include<RegisterProfiles>()
+                .Include<RegisterModelBinders>();
+
+            StringMetadataItemBuilder.EmailErrorMessage = "Неправильный формат адреса электронной почты";
+        }
+
+        private static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+           /* filters.Add(new CustomHandleErrorAttribute());
+            filters.Add(new ContextAccountAttribute());
+            filters.Add(new ConfigAttribute());
+            filters.Add(new VersionAttribute());
+             */
+        }
+
+        protected override void OnStart()
         {
             AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RegisterGlobalFilters(GlobalFilters.Filters);
         }
     }
 }
