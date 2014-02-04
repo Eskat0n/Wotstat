@@ -5,21 +5,17 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Crawler
+namespace Calc
 {
-    using System.IO;
-    using System.Threading;
-    using EasyNetQ;
-
-    public static class Program
+    static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        public static void Main()
+        static void Main()
         {
-            var service = new CrawlerService();
-            var servicesToRun = new ServiceBase[]  { service };
+            var service = new CalcService();
+            var servicesToRun = new ServiceBase[] { service };
             if (Environment.UserInteractive == false)
             {
                 ServiceBase.Run(servicesToRun);

@@ -1,6 +1,6 @@
-﻿namespace Crawler
+﻿namespace Calc
 {
-    partial class PlayerInfoProvideService
+    partial class CalcService
     {
         /// <summary> 
         /// Required designer variable.
