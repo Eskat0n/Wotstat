@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ByndyuSoft.Infrastructure.Domain">
+      <HintPath>..\..\packages\Infrastructure.Domain.1.1.0\lib\net40\ByndyuSoft.Infrastructure.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations">
+      <HintPath>..\..\packages\JetBrains.Annotations.7.0\lib\net45\JetBrains.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -74,18 +80,27 @@
   <ItemGroup>
     <Compile Include="Accounts\AccountController.cs" />
     <Compile Include="Accounts\ViewModels\AccountResponseModel.cs" />
+    <Compile Include="Enviroment\Impl\Config.cs" />
+    <Compile Include="Enviroment\IConfig.cs" />
     <Compile Include="Home\HomeController.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Services\IAuthenticationService.cs" />
     <Compile Include="Security\Services\IContextAccountProvider.cs" />
+    <Compile Include="Security\Services\Impl\AccountEntry.cs" />
     <Compile Include="Security\Services\Impl\ContextAccountProvider.cs" />
-    <Compile Include="Security\Services\Impl\OAuthAutithicationService.cs" />
+    <Compile Include="Security\Services\Impl\AutithicationService.cs" />
+    <Compile Include="Security\Services\Impl\CustomAutentificationModule.cs" />
+    <Compile Include="Security\Services\Impl\CustomIdentity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain.DataAccess\Domain.DataAccess.csproj">
+      <Project>{5d0e4e65-909a-4900-b5e1-25da7e1576b8}</Project>
+      <Name>Domain.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
       <Project>{950addb6-bffd-4c8d-bc16-2110f45a08f5}</Project>
       <Name>Domain.Model</Name>

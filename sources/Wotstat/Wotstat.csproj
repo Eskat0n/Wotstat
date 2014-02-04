@@ -43,11 +43,39 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="ByndyuSoft.Infrastructure.Common">
+      <HintPath>..\..\packages\Infrastructure.Common.1.0.13.0\lib\net40\ByndyuSoft.Infrastructure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ByndyuSoft.Infrastructure.Domain">
+      <HintPath>..\..\packages\Infrastructure.Domain.1.1.0\lib\net40\ByndyuSoft.Infrastructure.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="ByndyuSoft.Infrastructure.NHibernate">
+      <HintPath>..\..\packages\Infrastructure.NHibernate.1.0.13.0\lib\net40\ByndyuSoft.Infrastructure.NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="ByndyuSoft.Infrastructure.NHibernate.Conventions">
+      <HintPath>..\..\packages\Infrastructure.NHibernate.Conventions.1.0.13.0\lib\net40\ByndyuSoft.Infrastructure.NHibernate.Conventions.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor">
       <HintPath>..\packages\Castle.Windsor.2.5.4\lib\net40\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentMigrator">
+      <HintPath>..\..\packages\FluentMigrator.1.1.2.1\lib\40\FluentMigrator.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentMigrator.Runner">
+      <HintPath>..\..\packages\FluentMigrator.Runner.1.1.1.26\lib\NET40\FluentMigrator.Runner.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\packages\Iesi.Collections.3.3.3.4001\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=6.1.0.0, Culture=neutral, PublicKeyToken=3f033448d4bb5376, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\JetBrains.Annotations.7.0\lib\net45\JetBrains.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MvcExtensions">
@@ -62,6 +90,9 @@
     </Reference>
     <Reference Include="NArms.Windsor">
       <HintPath>..\packages\NArms.Windsor.1.3.0\lib\net40\NArms.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -261,6 +292,14 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain.DataAccess\Domain.DataAccess.csproj">
+      <Project>{5d0e4e65-909a-4900-b5e1-25da7e1576b8}</Project>
+      <Name>Domain.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Migrations\Migrations.csproj">
+      <Project>{c9caae58-ac23-4a9f-b012-8a319255202c}</Project>
+      <Name>Migrations</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wotstat.Application\Wotstat.Application.csproj">
       <Project>{c95b3522-021f-4bdf-af08-120a5d4c4a68}</Project>
       <Name>Wotstat.Application</Name>

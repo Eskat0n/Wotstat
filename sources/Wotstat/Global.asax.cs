@@ -11,6 +11,7 @@
         public MvcApplication()
         {
             Bootstrapper.BootstrapperTasks
+                .Include<RunMigrations>()
                 .Include<RegisterModelMetadata>()
                 .Include<RegisterControllers>()
                 .Include<RegisterRoutes>()

@@ -1,15 +1,14 @@
 ﻿namespace Domain.Model
 {
-    using System;
+    using ByndyuSoft.Infrastructure.Domain;
 
-    public class Account
+    public class Account: IEntity
     {
-        public Guid Token { get; set; }
-        
-        /*875641a2e187125e3fd73d5ceedb340163ab7eef*/
-        public string Nickname { get; set; }
+        public virtual int Id { get; set; }
+   
+        public virtual string Name { get; set; }
 
+        public virtual int PlayerId { get; set; }
 
-        public int Id { get; set; }
     }
 }

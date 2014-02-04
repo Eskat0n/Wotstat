@@ -1,5 +1,6 @@
 ﻿namespace Wotstat.Infrastructure.BootstrapperTasks
 {
+    using Migrations;
     using MvcExtensions;
     using Application.Annotations;
 
@@ -9,8 +10,8 @@
 
         public override TaskContinuation Execute()
         {
-
-            //migrations task
+            MigrationsRunner.Run();
+            
             return TaskContinuation.Continue;
         }
     }

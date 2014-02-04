@@ -15,7 +15,7 @@
         {
             container.Register(
                 // Authentication and authorization
-                Component.For<IAuthenticationService>().ImplementedBy<OAuthAutithicationService>().LifeStyle.Transient,
+                Component.For<IAuthenticationService>().ImplementedBy<AutithicationService>().LifeStyle.Transient,
                 Component.For<IContextAccountProvider>().ImplementedBy<ContextAccountProvider>().LifeStyle.Transient
             );
         }

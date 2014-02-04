@@ -8,21 +8,19 @@
     using Domain.Model;
 
     [UsedImplicitly]
-    public class OAuthAutithicationService : IAuthenticationService
+    public class AutithicationService : IAuthenticationService
     {
         public void LogIn(Account account, bool createPersistentCookie)
         {
-            /*
-            var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+            
+            var authCookie = new HttpCookie("wot")
             {
                 Expires = DateTime.Now.Add(FormsAuthentication.Timeout),
             };
 
-
             HttpContext.Current.Response.Cookies.Add(authCookie);
-            var identity = new CustomIdentity(accountEntry, authTicket.Name);
-            HttpContext.Current.User = new GenericPrincipal(identity, null);
-            */
+           // var identity = new CustomIdentity(accountEntry, authTicket.Name);
+            //HttpContext.Current.User = new GenericPrincipal(identity, null);
         }
 
         public void LogOut()

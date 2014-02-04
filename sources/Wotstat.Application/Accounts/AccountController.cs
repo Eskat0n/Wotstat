@@ -5,7 +5,6 @@
 
     public class AccountController : Controller
     {
-
         public ActionResult LogOn(AccountResponseModel accountResponseModel)
         {
             return RedirectToAction("Index");

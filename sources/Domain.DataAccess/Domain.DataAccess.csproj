@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D0E4E65-909A-4900-B5E1-25DA7E1576B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain.DataAccess</RootNamespace>
+    <AssemblyName>Domain.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ByndyuSoft.Infrastructure.Common">
+      <HintPath>..\packages\Infrastructure.Common.1.0.13.0\lib\net40\ByndyuSoft.Infrastructure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ByndyuSoft.Infrastructure.Domain">
+      <HintPath>..\packages\Infrastructure.Domain.1.1.0\lib\net40\ByndyuSoft.Infrastructure.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="ByndyuSoft.Infrastructure.NHibernate">
+      <HintPath>..\packages\Infrastructure.NHibernate.1.0.13.0\lib\net40\ByndyuSoft.Infrastructure.NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="ByndyuSoft.Infrastructure.NHibernate.Conventions">
+      <HintPath>..\packages\Infrastructure.NHibernate.Conventions.1.0.13.0\lib\net40\ByndyuSoft.Infrastructure.NHibernate.Conventions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.3.3.4001\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations">
+      <HintPath>..\packages\JetBrains.Annotations.7.0\lib\net45\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NHibernateInitializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\SourcedNHibernateRepository.cs" />
+    <Compile Include="Sources\NHibernate\Conventions\ColumnNameConvention.cs" />
+    <Compile Include="Sources\NHibernate\Conventions\EntityMapConvention.cs" />
+    <Compile Include="Sources\NHibernate\Conventions\EnumIntConvention.cs" />
+    <Compile Include="Sources\NHibernate\Conventions\ForeignKeyColumnNameConvention.cs" />
+    <Compile Include="Sources\NHibernate\Conventions\PluralRelationsConvention.cs" />
+    <Compile Include="Sources\NHibernate\Conventions\PrimaryKeyConvention.cs" />
+    <Compile Include="Sources\NHibernate\Conventions\PropertyLengthConvention.cs" />
+    <Compile Include="Sources\NHibernate\Conventions\SingularRelationsConvention.cs" />
+    <Compile Include="Sources\NHibernate\Utilites\PluralizerStringExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sources\NHibernate\Overrides\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
+      <Project>{950addb6-bffd-4c8d-bc16-2110f45a08f5}</Project>
+      <Name>Domain.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
