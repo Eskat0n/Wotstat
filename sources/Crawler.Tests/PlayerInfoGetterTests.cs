@@ -1,9 +1,5 @@
 ﻿namespace Crawler.Tests
 {
-    using System.Threading;
-    using System.Threading.Tasks;
-    using EasyNetQ;
-    using Messages;
     using NUnit.Framework;
 
     [TestFixture]
