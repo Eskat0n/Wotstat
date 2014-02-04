@@ -9,8 +9,6 @@
     [UsedImplicitly]
     public class RegisterProfiles : BootstrapperTask
     {
-  
-
         public override TaskContinuation Execute()
         {
             ProfileLoader.FromAssemblyContaining<HomeController>().LoadAll();
