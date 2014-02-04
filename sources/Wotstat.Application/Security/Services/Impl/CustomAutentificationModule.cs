@@ -4,10 +4,10 @@
     using System.Security.Principal;
     using System.Threading;
     using System.Web;
-    using System.Web.Security;
 
     public class CustomAutentificationModule : IHttpModule
     {
+
         public void Init(HttpApplication context)
         {
             context.AuthenticateRequest += OnAuthenticateRequest;
@@ -28,10 +28,8 @@
 
             try
             {
-                var ticket = FormsAuthentication.Decrypt(cookie.Value);
-                if (ticket == null || ticket.Expired)
-                    return;
-                var identity = new CustomIdentity(AccountEntry.Deserialize(ticket.UserData), ticket.Name);
+                var accountEntry = AccountEntry.Deserialize(cookie.Value);
+                var identity = new CustomIdentity(accountEntry, accountEntry.Name);
                 var principal = new GenericPrincipal(identity, null);
                 context.User = principal;
                 Thread.CurrentPrincipal = principal;

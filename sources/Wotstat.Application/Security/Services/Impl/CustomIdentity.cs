@@ -14,9 +14,9 @@
             _accountEntry = accountEntry;
         }
 
-        private int Id
+        private string Token
         {
-            get { return _accountEntry.Id; }
+            get { return _accountEntry.Token; }
         }
 
         public string Name { get; private set; }
@@ -28,7 +28,7 @@
 
         public bool IsAuthenticated
         {
-            get { return Id >= 0; }
+            get { return Token !=null; }
         }
     }
 }

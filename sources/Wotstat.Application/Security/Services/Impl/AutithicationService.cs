@@ -3,24 +3,24 @@
     using System;
     using System.Security.Principal;
     using System.Web;
-    using System.Web.Security;
     using Annotations;
     using Domain.Model;
 
     [UsedImplicitly]
     public class AutithicationService : IAuthenticationService
     {
-        public void LogIn(Account account, bool createPersistentCookie)
+        public void LogIn(Account account, TimeSpan expires)
         {
-            
-            var authCookie = new HttpCookie("wot")
+            var accountEntry = new AccountEntry(account);
+
+            var authCookie = new HttpCookie("wot", accountEntry.Serialize())
             {
-                Expires = DateTime.Now.Add(FormsAuthentication.Timeout),
+                Expires = DateTime.Now.Add(expires)
             };
 
             HttpContext.Current.Response.Cookies.Add(authCookie);
-           // var identity = new CustomIdentity(accountEntry, authTicket.Name);
-            //HttpContext.Current.User = new GenericPrincipal(identity, null);
+            var identity = new CustomIdentity(accountEntry, accountEntry.Name);
+            HttpContext.Current.User = new GenericPrincipal(identity, null);
         }
 
         public void LogOut()

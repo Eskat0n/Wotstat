@@ -1,26 +1,40 @@
 ﻿namespace Wotstat.Application.Accounts
 {
+    using System;
     using System.Web.Mvc;
     using ByndyuSoft.Infrastructure.Domain;
     using Domain.Model;
+    using Domain.Model.Criteria;
     using JetBrains.Annotations;
     using NArms.AutoMapper;
+    using Security.Services;
     using ViewModels;
 
     public class AccountController : Controller
     {
         [UsedImplicitly]
+        public IQueryBuilder Query { get; set; }
+
+        [UsedImplicitly]
         public IRepository<Account> AccountRepository { get; set; }
 
+        [UsedImplicitly]
+        public IAuthenticationService AuthenticationService { get; set; }
         public ActionResult LogOn(UserResponseModel userResponseModel)
         {
             if (userResponseModel.Status != "ok") 
-                return RedirectToAction("Index");
-            
-            //ToDo check accountExist
+               return RedirectToAction("Index");
 
-            var account = userResponseModel.MapTo(new Account());
-            AccountRepository.Add(account);
+            var account = Query.For<Account>()
+                .With(new AccountPlayerIdCriterion(userResponseModel.Id));
+            
+            if (account == null)
+            {
+                account = userResponseModel.MapTo(new Account());
+                AccountRepository.Add(account);
+            }
+
+            AuthenticationService.LogIn(account, TimeSpan.Parse(userResponseModel.ExpiresDate));
 
             return RedirectToAction("Index");
         }

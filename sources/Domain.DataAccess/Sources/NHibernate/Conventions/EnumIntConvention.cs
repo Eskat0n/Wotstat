@@ -1,4 +1,4 @@
-﻿namespace ByndyuSoft.Digit.Domain.DataAccess.Sources.NHibernate.Conventions
+﻿namespace Domain.DataAccess.Sources.NHibernate.Conventions
 {
     using FluentNHibernate.Conventions;
     using FluentNHibernate.Conventions.Instances;

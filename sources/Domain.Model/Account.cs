@@ -8,13 +8,21 @@
         [UsedImplicitly]
         public Account()
         {
-            
         }
-        public virtual int Id { get; set; }
-   
-        public virtual string Name { get; set; }
 
-        public virtual int PlayerId { get; set; }
+        [UsedImplicitly]
+        public Account(string token)
+        {
+            Token = token;
+        }
+
+        public virtual int Id { get; set; }
+
+        public virtual string Name { get; protected set; }
+
+        public virtual long PlayerId { get; protected set; }
+
+        public virtual string Token { get; protected set; }
 
     }
 }

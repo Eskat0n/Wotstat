@@ -1,4 +1,4 @@
-﻿namespace ByndyuSoft.Digit.Domain.DataAccess.Sources.NHibernate.Utilities
+﻿namespace Domain.DataAccess.Sources.NHibernate.Utilites
 {
     using System;
     using System.Linq;

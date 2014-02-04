@@ -91,7 +91,7 @@
   <ItemGroup>
     <Compile Include="Accounts\AccountController.cs" />
     <Compile Include="Accounts\Profiles\AccountProfile.cs" />
-    <Compile Include="Accounts\ViewModels\AccountResponseModel.cs" />
+    <Compile Include="Accounts\ViewModels\UserResponseModel.cs" />
     <Compile Include="Enviroment\Impl\Config.cs" />
     <Compile Include="Enviroment\IConfig.cs" />
     <Compile Include="Home\HomeController.cs" />

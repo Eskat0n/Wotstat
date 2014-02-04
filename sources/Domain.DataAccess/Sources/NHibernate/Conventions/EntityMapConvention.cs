@@ -1,9 +1,9 @@
-﻿namespace ByndyuSoft.Digit.Domain.DataAccess.Sources.NHibernate.Conventions
+﻿namespace Domain.DataAccess.Sources.NHibernate.Conventions
 {
+    using ByndyuSoft.Digit.Domain.DataAccess.Sources.NHibernate.Utilities;
     using FluentNHibernate.Conventions;
     using FluentNHibernate.Conventions.Instances;
     using JetBrains.Annotations;
-    using Utilities;
 
     [UsedImplicitly]
     public class EntityMapConvention : IClassConvention, IJoinedSubclassConvention

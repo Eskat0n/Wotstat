@@ -23,8 +23,9 @@
             if (IsAuthorized() == false)
                 return null;
 
-            var identity = HttpContext.Current.User.Identity;
-            //AccountEntry.Deserialize();
+            var login = HttpContext.Current.User.Identity.Name;
+
+      
 
             return null;
         }  
