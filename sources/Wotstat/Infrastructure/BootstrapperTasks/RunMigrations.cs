@@ -1,8 +1,8 @@
 ﻿namespace Wotstat.Infrastructure.BootstrapperTasks
 {
+    using JetBrains.Annotations;
     using Migrations;
     using MvcExtensions;
-    using Application.Annotations;
 
     [UsedImplicitly]
     public class RunMigrations : BootstrapperTask

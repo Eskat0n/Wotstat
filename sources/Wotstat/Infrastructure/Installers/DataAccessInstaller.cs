@@ -1,6 +1,5 @@
 ﻿namespace Wotstat.Infrastructure.Installers
 {
-    using Application.Annotations;
     using ByndyuSoft.Infrastructure.Domain;
     using ByndyuSoft.Infrastructure.NHibernate;
     using Castle.MicroKernel.Registration;
@@ -8,6 +7,7 @@
     using Castle.Windsor;
     using Domain.DataAccess;
     using Domain.DataAccess.Repositories;
+    using JetBrains.Annotations;
     using NHibernate;
 
     [UsedImplicitly]

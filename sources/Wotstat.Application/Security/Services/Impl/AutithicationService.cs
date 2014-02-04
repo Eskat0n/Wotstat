@@ -3,8 +3,8 @@
     using System;
     using System.Security.Principal;
     using System.Web;
-    using Annotations;
     using Domain.Model;
+    using JetBrains.Annotations;
 
     [UsedImplicitly]
     public class AutithicationService : IAuthenticationService

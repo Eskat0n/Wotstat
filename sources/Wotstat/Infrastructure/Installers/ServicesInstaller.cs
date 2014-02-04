@@ -1,11 +1,11 @@
 ﻿namespace Wotstat.Infrastructure.Installers
 {
-    using Application.Annotations;
     using Application.Security.Services;
     using Application.Security.Services.Impl;
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
+    using JetBrains.Annotations;
 
 
     [UsedImplicitly]
@@ -15,8 +15,8 @@
         {
             container.Register(
                 // Authentication and authorization
-                Component.For<IAuthenticationService>().ImplementedBy<AutithicationService>().LifeStyle.Transient,
-                Component.For<IContextAccountProvider>().ImplementedBy<ContextAccountProvider>().LifeStyle.Transient
+                Component.For<IAuthenticationService>().ImplementedBy<AutithicationService>().LifestyleTransient(),
+                Component.For<IContextAccountProvider>().ImplementedBy<ContextAccountProvider>().LifestyleTransient()
             );
         }
     }

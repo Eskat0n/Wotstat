@@ -2,8 +2,8 @@
 {
     using System.Web.Mvc;
     using System.Web.Routing;
+    using JetBrains.Annotations;
     using MvcExtensions;
-    using Application.Annotations;
 
     [UsedImplicitly]
     public class RegisterRoutes : RegisterRoutesBase

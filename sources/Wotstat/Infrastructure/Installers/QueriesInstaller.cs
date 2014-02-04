@@ -5,8 +5,8 @@
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
-    using Application.Annotations;
     using Domain.DataAccess;
+    using JetBrains.Annotations;
 
     [UsedImplicitly]
     public class QueriesInstaller : IWindsorInstaller
@@ -20,9 +20,9 @@
 
             container.Register(
                 queries,
-                Component.For<IQueryBuilder>().AsFactory().LifeStyle.Transient,
-                Component.For<IQueryFactory>().AsFactory().LifeStyle.Transient,
-                Component.For(typeof(IQueryFor<>)).ImplementedBy(typeof(QueryFor<>)).LifeStyle.Transient
+                Component.For<IQueryBuilder>().AsFactory().LifestyleTransient(),
+                Component.For<IQueryFactory>().AsFactory().LifestyleTransient(),
+                Component.For(typeof(IQueryFor<>)).ImplementedBy(typeof(QueryFor<>)).LifestyleTransient()
                 );
         }
     }

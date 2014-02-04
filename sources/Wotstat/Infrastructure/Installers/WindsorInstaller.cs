@@ -1,9 +1,9 @@
 ﻿namespace Wotstat.Infrastructure.Installers
 {
-    using Application.Annotations;
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
+    using JetBrains.Annotations;
     using NArms.Windsor;
 
     [UsedImplicitly]

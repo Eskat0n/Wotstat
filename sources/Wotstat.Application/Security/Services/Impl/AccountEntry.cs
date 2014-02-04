@@ -4,8 +4,8 @@
     using System.IO;
     using System.Text;
     using System.Xml.Serialization;
-    using Annotations;
     using Domain.Model;
+    using JetBrains.Annotations;
 
     public class AccountEntry
     {

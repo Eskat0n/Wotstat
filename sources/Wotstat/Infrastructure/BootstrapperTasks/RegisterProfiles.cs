@@ -1,8 +1,8 @@
 ﻿namespace Wotstat.Infrastructure.BootstrapperTasks
 {
-    using Application.Annotations;
     using Application.Home;
     using AutoMapper;
+    using JetBrains.Annotations;
     using MvcExtensions;
     using NArms.AutoMapper.Bootstrapping;
 
