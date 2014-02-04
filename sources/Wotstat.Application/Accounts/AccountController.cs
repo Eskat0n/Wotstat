@@ -10,7 +10,7 @@
     using Security.Services;
     using ViewModels;
 
-    public class AccountController : Controller
+    public class AccountController:Controller 
     {
         [UsedImplicitly]
         public IQueryBuilder Query { get; set; }

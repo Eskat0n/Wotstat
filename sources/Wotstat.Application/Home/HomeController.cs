@@ -6,14 +6,11 @@
 
     public class HomeController : Controller
     {
-        [UsedImplicitly]
-        public IContextAccountProvider ContextAccountProvider { get; set; }
         public ActionResult Index()
         {
-            var account = ContextAccountProvider.ContextAccount();
-            
-            return View();
+           return View();
         }
+
 
     }
 }

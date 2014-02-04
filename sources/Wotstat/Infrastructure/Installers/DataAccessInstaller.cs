@@ -2,6 +2,7 @@
 {
     using ByndyuSoft.Infrastructure.Domain;
     using ByndyuSoft.Infrastructure.NHibernate;
+    using Castle.Facilities.TypedFactory;
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
@@ -15,6 +16,8 @@
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
+            container.AddFacility<TypedFactoryFacility>();
+
             container.Register(
                    // NHibernate
                     Component.For<INHibernateInitializer>().ImplementedBy<NHibernateInitializer>(),
