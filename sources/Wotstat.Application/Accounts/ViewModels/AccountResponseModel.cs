@@ -3,7 +3,7 @@
     using System;
     using Newtonsoft.Json;
 
-    public class AccountResponseModel
+    public class UserResponseModel
     {
         [JsonProperty("status")]
         public string Status { get; set; }
