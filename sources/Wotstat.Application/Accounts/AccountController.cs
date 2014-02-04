@@ -20,13 +20,15 @@
 
         [UsedImplicitly]
         public IAuthenticationService AuthenticationService { get; set; }
+       
+        [HttpGet]
         public ActionResult LogOn(UserResponseModel userResponseModel)
         {
             if (userResponseModel.Status != "ok") 
                return RedirectToAction("Index");
 
             var account = Query.For<Account>()
-                .With(new AccountPlayerIdCriterion(userResponseModel.Id));
+                .With(new AccountPlayerIdCriterion(userResponseModel.Account_Id));
             
             if (account == null)
             {
@@ -34,7 +36,7 @@
                 AccountRepository.Add(account);
             }
 
-            AuthenticationService.LogIn(account, TimeSpan.Parse(userResponseModel.ExpiresDate));
+            AuthenticationService.LogIn(account, TimeSpan.Parse(userResponseModel.Expires_At));
 
             return RedirectToAction("Index");
         }

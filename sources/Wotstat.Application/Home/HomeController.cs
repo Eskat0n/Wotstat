@@ -11,6 +11,7 @@
         public ActionResult Index()
         {
             var account = ContextAccountProvider.ContextAccount();
+            
             return View();
         }
 

@@ -12,7 +12,9 @@
         {
             CreateMap<UserResponseModel, Account>()
                 .ForMember(x => x.Name, x => x.MapFrom(z => z.Nickname))
-                .ForMember(x => x.PlayerId, x => x.MapFrom(z => z.Id));
+                .ForMember(x => x.PlayerId, x => x.MapFrom(z => z.Account_Id))
+                .ForMember(x => x.Token, x => x.MapFrom(z => z.Access_Token))
+                .ForMember(x => x.Id, x => x.Ignore());
 
         }
     }
