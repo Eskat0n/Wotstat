@@ -16,7 +16,7 @@ namespace Calc
 
     public partial class CalcService : ServiceBase
     {
-        private IBus bus;
+        private IBus bus; 
 
         public CalcService()
         {
@@ -27,6 +27,7 @@ namespace Calc
         {
             bus = RabbitHutch.CreateBus("host=localhost");
             bus.Subscribe<PlayerInfo>("Wotstat", OnMessage);
+            
         }
 
         public new void Stop()
@@ -45,6 +46,7 @@ namespace Calc
 
         private void OnMessage(PlayerInfo message)
         {
+            
             // TODO Calculate and write to database
         }
 

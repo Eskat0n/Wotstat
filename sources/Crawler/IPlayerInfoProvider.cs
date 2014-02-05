@@ -1,5 +1,6 @@
 ﻿namespace Crawler
 {
+    using System;
     using System.Collections.Generic;
     using System.Net;
     using Messages;
@@ -27,6 +28,7 @@
             var statisticsBlockRaw = statisticsRaw.All;
             return new PlayerInfo()
             {
+                Time = DateTime.Now,
                 Id = id,
                 HitsPercents = statisticsBlockRaw.HitsPercents,
                 BattleAvgXp = statisticsBlockRaw.BattleAvgXp,

@@ -1,7 +1,10 @@
 ﻿namespace Messages
 {
+    using System;
+
     public class PlayerInfo
     {
+        public DateTime Time { get; set; }
         public int Id { get; set; }
         public int HitsPercents { get; set; }
         public int BattleAvgXp { get; set; }
