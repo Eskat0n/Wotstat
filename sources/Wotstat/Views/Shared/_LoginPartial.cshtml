@@ -1,6 +1,18 @@
-﻿
-<ul class="nav navbar-nav navbar-right">
-    <li>
-        <a href="https://api.worldoftanks.ru/wot/auth/login/?application_id=171745d21f7f98fd8878771da1000a31&account_id=5806574&redirect_uri=http://localhost:57642/account/logon/">Войти</a>
-    </li>
-</ul>
+﻿@using Wotstat.Application.Boilerplate.Extensions.Web
+
+@if (Html.AccountName() == null)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="https://api.worldoftanks.ru/wot/auth/login/?application_id=171745d21f7f98fd8878771da1000a31&account_id=5806574&redirect_uri=http://localhost:57642/account/logon/">Войти</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+          Привет  @Html.AccountName()!
+        </li>
+    </ul>
+}

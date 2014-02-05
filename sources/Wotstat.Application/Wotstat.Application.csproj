@@ -44,6 +44,12 @@
     <Reference Include="ByndyuSoft.Infrastructure.Web">
       <HintPath>..\..\packages\Infrastructure.Web.1.0.13.0\lib\net40\ByndyuSoft.Infrastructure.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\packages\Castle.Windsor.2.5.4\lib\net40\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="JetBrains.Annotations">
       <HintPath>..\..\packages\JetBrains.Annotations.7.0\lib\net45\JetBrains.Annotations.dll</HintPath>
     </Reference>
@@ -77,6 +83,9 @@
     </Reference>
     <Reference Include="NArms.AutoMapper">
       <HintPath>..\..\packages\NArms.AutoMapper.1.1.1.0\lib\net40\NArms.AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="NArms.Windsor">
+      <HintPath>..\..\packages\NArms.Windsor.1.3.0\lib\net40\NArms.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -124,6 +133,8 @@
     <Compile Include="Accounts\AccountController.cs" />
     <Compile Include="Accounts\Profiles\AccountProfile.cs" />
     <Compile Include="Accounts\ViewModels\UserResponseModel.cs" />
+    <Compile Include="Boilerplate\Extensions\Web\HtmlAccountExtensions.cs" />
+    <Compile Include="Boilerplate\Filters\ContextAccountAttribute.cs" />
     <Compile Include="Enviroment\Impl\Config.cs" />
     <Compile Include="Enviroment\IConfig.cs" />
     <Compile Include="Home\HomeController.cs" />

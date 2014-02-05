@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
     using System.Web.Optimization;
+    using Application.Boilerplate.Filters;
     using Infrastructure.BootstrapperTasks;
     using MvcExtensions;
     using MvcExtensions.Windsor;
@@ -24,10 +25,10 @@
         private static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
            /* filters.Add(new CustomHandleErrorAttribute());
-            filters.Add(new ContextAccountAttribute());
             filters.Add(new ConfigAttribute());
             filters.Add(new VersionAttribute());
              */
+            filters.Add(new ContextAccountAttribute());
         }
 
         protected override void OnStart()

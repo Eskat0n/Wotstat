@@ -1,6 +1,5 @@
 ﻿namespace Wotstat.Application.Accounts
 {
-    using System;
     using System.Web.Mvc;
     using ByndyuSoft.Infrastructure.Domain;
     using Domain.Model;
