@@ -1,7 +1,6 @@
 ﻿namespace Domain.Model.Entities
 {
     using ByndyuSoft.Infrastructure.Domain;
-    using Domain.Model.Entities;
 
     public class DynamicData : IEntity
     {

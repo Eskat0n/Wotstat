@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Criteria\PlayerIdAndDateCriterion.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Criteria\AccountNameCriterion.cs" />
     <Compile Include="Criteria\AccountPlayerIdCriterion.cs" />

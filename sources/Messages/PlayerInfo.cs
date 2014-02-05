@@ -5,7 +5,7 @@
     public class PlayerInfo
     {
         public DateTime Time { get; set; }
-        public int Id { get; set; }
+        public int PlayerId { get; set; }
         public double HitsPercents { get; set; }
         public double BattleAvgXp { get; set; }
         public int Draws { get; set; }

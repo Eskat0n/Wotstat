@@ -3,8 +3,8 @@
     using System.Linq;
     using ByndyuSoft.Infrastructure.Domain;
     using ByndyuSoft.Infrastructure.NHibernate;
-    using Model;
     using Model.Criteria;
+    using Model.Entities;
 
     public class FindAccountByNameQuery : LinqQueryBase<Account, AccountNameCriterion, Account>
     {

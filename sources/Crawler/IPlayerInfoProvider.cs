@@ -29,7 +29,7 @@
             return new PlayerInfo()
             {
                 Time = DateTime.Now,
-                Id = id,
+                PlayerId = id,
                 HitsPercents = statisticsBlockRaw.HitsPercents,
                 BattleAvgXp = statisticsBlockRaw.BattleAvgXp,
                 Draws = statisticsBlockRaw.Draws,

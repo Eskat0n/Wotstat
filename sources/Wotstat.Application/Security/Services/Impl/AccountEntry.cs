@@ -5,6 +5,7 @@
     using System.Text;
     using System.Xml.Serialization;
     using Domain.Model;
+    using Domain.Model.Entities;
     using JetBrains.Annotations;
 
     public class AccountEntry

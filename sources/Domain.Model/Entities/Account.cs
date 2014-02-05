@@ -1,4 +1,4 @@
-﻿namespace Domain.Model
+﻿namespace Domain.Model.Entities
 {
     using ByndyuSoft.Infrastructure.Domain;
     using JetBrains.Annotations;

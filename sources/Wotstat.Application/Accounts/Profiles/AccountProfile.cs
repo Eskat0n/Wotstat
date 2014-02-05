@@ -1,7 +1,7 @@
 ﻿namespace Wotstat.Application.Accounts.Profiles
 {
     using AutoMapper;
-    using Domain.Model;
+    using Domain.Model.Entities;
     using JetBrains.Annotations;
     using ViewModels;
 
@@ -14,7 +14,6 @@
                 .ForMember(x => x.Name, x => x.MapFrom(z => z.Nickname))
                 .ForMember(x => x.PlayerId, x => x.MapFrom(z => z.Account_Id))
                 .ForMember(x => x.Id, x => x.Ignore());
-
         }
     }
 }

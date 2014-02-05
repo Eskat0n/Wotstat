@@ -2,8 +2,8 @@
 {
     using System.Web.Mvc;
     using ByndyuSoft.Infrastructure.Domain;
-    using Domain.Model;
     using Domain.Model.Criteria;
+    using Domain.Model.Entities;
     using JetBrains.Annotations;
     using NArms.AutoMapper;
     using Security.Services;

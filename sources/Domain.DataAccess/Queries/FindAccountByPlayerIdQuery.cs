@@ -5,6 +5,7 @@
     using ByndyuSoft.Infrastructure.NHibernate;
     using Model;
     using Model.Criteria;
+    using Model.Entities;
 
     public class FindAccountByPlayerIdQuery : LinqQueryBase<Account, AccountPlayerIdCriterion, Account>
     {

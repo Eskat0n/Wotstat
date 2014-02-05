@@ -7,6 +7,7 @@
     using FluentNHibernate.Cfg.Db;
     using FluentNHibernate.Conventions.Helpers;
     using Model;
+    using Model.Entities;
     using NHibernate.Cfg;
     using NHibernate.Context;
 
