@@ -36,9 +36,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8A320D
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calc", "Calc\Calc.csproj", "{0A1DECB9-ED61-4BE1-B96B-2B2732284CC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calc", "sources\Calc\Calc.csproj", "{0A1DECB9-ED61-4BE1-B96B-2B2732284CC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calc.Run", "Calc.Run\Calc.Run.csproj", "{89CB7FFD-93BC-4CCB-B7B3-880DF819BAE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calc.Run", "sources\Calc.Run\Calc.Run.csproj", "{89CB7FFD-93BC-4CCB-B7B3-880DF819BAE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
