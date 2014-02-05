@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Calc.Entities
 {
+    using Domain.Model;
+    using Domain.Model.Entities;
+
     class StatisticData
     {
         public virtual int Id { get; set; }
-        public virtual DateTime Date { get; set; }
+        public virtual Period Period { get; set; }
         public virtual int User { get; set; }
         public virtual int HitsPercents { get; set; }
         public virtual int BattleAvgXp { get; set; }
@@ -18,7 +21,6 @@ namespace Calc.Entities
         public virtual int DamageDealt { get; set; }
         public virtual int Frags { get; set; }
         public virtual int MaxXp { get; set; }
-
     }
 }
                       
