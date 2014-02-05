@@ -22,7 +22,7 @@
 
         public virtual string Name { get; protected set; }
 
-        public virtual long PlayerId { get; protected set; }
+        public virtual int PlayerId { get; protected set; }
 
         [CanBeNull]
         public virtual string GetToken()
