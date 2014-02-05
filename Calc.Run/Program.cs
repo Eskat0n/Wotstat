@@ -10,7 +10,7 @@ namespace Calc.Run
     {
         static void Main(string[] args)
         {
-
+            Calc.Program.Main();
         }
     }
 }

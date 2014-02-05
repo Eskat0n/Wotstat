@@ -1,5 +1,6 @@
 ﻿namespace Calc
 {
+    using System;
     using System.Collections.Generic;
     using System.ServiceProcess;
     using ByndyuSoft.Infrastructure.Domain;

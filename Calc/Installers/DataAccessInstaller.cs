@@ -23,11 +23,11 @@
                     Component.For<INHibernateInitializer>().ImplementedBy<NHibernateInitializer>(),
                     Component.For<IUnitOfWorkFactory>().ImplementedBy<NHibernateUnitOfWorkFactory>(),
                     Component.For<ISessionProvider>().ImplementedBy<PerRequestSessionProvider>()
-                        .LifeStyle.PerWebRequest,
+                        .LifeStyle.Transient,
                     Component.For(typeof(IRepository<>)).ImplementedBy(typeof(SourcedNHibernateRepository<>)).
-                        LifeStyle.PerWebRequest,
+                        LifeStyle.Transient,
                     Component.For<ILinqProvider>().ImplementedBy<NHibernateLinqProvider>()
-                        .LifeStyle.PerWebRequest,
+                        .LifeStyle.Transient,
                     Component.For<ISessionFactory>().UsingFactoryMethod(x => x.Resolve<INHibernateInitializer>()
                                                                              .GetConfiguration()
                                                                              .BuildSessionFactory())

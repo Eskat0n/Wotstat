@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Calc
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main()
+        public static void Main()
         {
             var service = new CalcService();
             var servicesToRun = new ServiceBase[] { service };
