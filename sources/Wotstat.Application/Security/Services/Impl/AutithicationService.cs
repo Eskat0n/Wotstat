@@ -3,6 +3,7 @@
     using System;
     using System.Security.Principal;
     using System.Web;
+    using System.Web.Security;
     using Domain.Model.Entities;
     using JetBrains.Annotations;
 
