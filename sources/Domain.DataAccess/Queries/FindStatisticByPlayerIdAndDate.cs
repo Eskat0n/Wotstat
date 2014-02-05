@@ -13,7 +13,7 @@
 
         public override StatisticalData Ask(PlayerIdAndDateCriterion criterion)
         {
-            return Query.OrderByDescending(x => x.Id).SingleOrDefault(x => (x.Date == criterion.Date) && (x.PlayerId == criterion.PlayerId));
+            return Query.SingleOrDefault(x => (x.Date == criterion.Date) && (x.PlayerId == criterion.PlayerId));
         }
     }
 }

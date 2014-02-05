@@ -22,7 +22,7 @@
                    // NHibernate
                     Component.For<INHibernateInitializer>().ImplementedBy<NHibernateInitializer>(),
                     Component.For<IUnitOfWorkFactory>().ImplementedBy<NHibernateUnitOfWorkFactory>(),
-                    Component.For<ISessionProvider>().ImplementedBy<PerRequestSessionProvider>()
+                    Component.For<ISessionProvider>().ImplementedBy<SessionProvider>()
                         .LifeStyle.Transient,
                     Component.For(typeof(IRepository<>)).ImplementedBy(typeof(SourcedNHibernateRepository<>)).
                         LifeStyle.Transient,

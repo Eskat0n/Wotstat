@@ -17,7 +17,9 @@
         private readonly IRepository<Period> _periodsRepository;
         private readonly IRepository<StatisticalData> _statisticDataRepository;
         private readonly IRepository<DynamicData> _dynamicDataRepository;
+        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private IEnumerable<Period> _periods;
+        
 
         public CalcService()
         {
@@ -28,11 +30,15 @@
             _periodsRepository = IoC.Resolve<IRepository<Period>>();
             _statisticDataRepository = IoC.Resolve<IRepository<StatisticalData>>();
             _dynamicDataRepository = IoC.Resolve<IRepository<DynamicData>>();
+            _unitOfWorkFactory = IoC.Resolve<IUnitOfWorkFactory>();
         }
 
         public void Start()
         {
-            _periods = _periodsRepository.All();
+            using (var unitOfWork = _unitOfWorkFactory.Create())
+            {
+                _periods = _periodsRepository.All();
+            }
             _bus = RabbitHutch.CreateBus("host=localhost");
             _bus.Subscribe<PlayerInfo>("Wotstat", OnMessage);
         }
@@ -53,19 +59,23 @@
 
         private void OnMessage(PlayerInfo message)
         {
-            var nowData = Convert(message);
-            _statisticDataRepository.Add(nowData);
-            
-            _periods.ForEach(period =>
+            using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                var oldData = _query.For<StatisticalData>().With(new PlayerIdAndDateCriterion(message.PlayerId, nowData.Date.AddDays(-period.DaysCount)));
-                if (oldData == null)
-                    return;
-                var res = Subtraction(nowData, oldData);
-                res.Period = period;
-                res.PlayerId = message.PlayerId;
-                _dynamicDataRepository.Add(res);
-            });
+                var nowData = Convert(message);
+                _statisticDataRepository.Add(nowData);
+                
+                _periods.ForEach(period =>
+                {
+                    var oldData = _query.For<StatisticalData>().With(new PlayerIdAndDateCriterion(message.PlayerId, nowData.Date.AddDays(-period.DaysCount)));
+                    if (oldData == null)
+                        return;
+                    var res = Subtraction(nowData, oldData);
+                    res.Period = period;
+                    res.PlayerId = message.PlayerId;
+                    _dynamicDataRepository.Add(res);
+                });
+                unitOfWork.Commit();
+            }
         }
 
         private StatisticalData Convert(PlayerInfo a)
