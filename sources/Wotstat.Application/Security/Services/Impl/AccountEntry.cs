@@ -18,7 +18,7 @@
         public AccountEntry(Account account)
         {
             Name = account.Name;
-            Token = account.Token;
+            Token = account.GetToken();
             Id = account.Id;
         }
 
