@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calc.Entities
+﻿namespace Domain.Model.Entities
 {
-    class DynamicData
+    using ByndyuSoft.Infrastructure.Domain;
+    using Domain.Model.Entities;
+
+    public class DynamicData : IEntity
     {
         public virtual int Id { get; set; }
-        public virtual DateTime Date { get; set; }
+        public virtual Period Period { get; set; }
         public virtual int User { get; set; }
-        public virtual int HitsPercents { get; set; }
-        public virtual int BattleAvgXp { get; set; }
-        public virtual int WinsPercents { get; set; }
+        public virtual double HitsPercents { get; set; }
+        public virtual double BattleAvgXp { get; set; }
+        public virtual double WinsPercents { get; set; }
         public virtual int Battles { get; set; }
         public virtual int DamageDealt { get; set; }
         public virtual int Frags { get; set; }

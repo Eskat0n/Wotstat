@@ -65,10 +65,10 @@
         private class StatisticsBlockRaw
         {
             [JsonProperty("hits_percents")]
-            public int HitsPercents { get; set; }
+            public double HitsPercents { get; set; }
 
             [JsonProperty("battle_avg_xp")]
-            public int BattleAvgXp { get; set; }
+            public double BattleAvgXp { get; set; }
 
             [JsonProperty("draws")]
             public int Draws { get; set; }

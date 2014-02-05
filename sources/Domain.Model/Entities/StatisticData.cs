@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calc.Entities
+﻿namespace Domain.Model.Entities
 {
+    using System;
+    using ByndyuSoft.Infrastructure.Domain;
     using Domain.Model;
     using Domain.Model.Entities;
 
-    class StatisticData
+    public class StatisticData : IEntity
     {
         public virtual int Id { get; set; }
-        public virtual Period Period { get; set; }
+        public virtual DateTime Date { get; set; }
         public virtual int User { get; set; }
-        public virtual int HitsPercents { get; set; }
-        public virtual int BattleAvgXp { get; set; }
-        public virtual int WinsPercents { get; set; }
+        public virtual double HitsPercents { get; set; }
+        public virtual double BattleAvgXp { get; set; }
+        public virtual double WinsPercents { get; set; }
         public virtual int Battles { get; set; }
         public virtual int DamageDealt { get; set; }
         public virtual int Frags { get; set; }
         public virtual int MaxXp { get; set; }
     }
 }
-                      
