@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Changesets\Migration201402041101.cs" />
+    <Compile Include="Changesets\Migration201402051803.cs" />
     <Compile Include="Changesets\Migration201402051749.cs" />
     <Compile Include="Changesets\Migration201402051648.cs" />
     <Compile Include="Changesets\Migration201402051642.cs" />
