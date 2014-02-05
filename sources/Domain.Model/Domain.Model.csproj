@@ -50,9 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
+    <Compile Include="Entities\Account.cs" />
     <Compile Include="Criteria\AccountNameCriterion.cs" />
     <Compile Include="Criteria\AccountPlayerIdCriterion.cs" />
+    <Compile Include="Entities\DynamicData.cs" />
+    <Compile Include="Entities\Periods.cs" />
+    <Compile Include="Entities\StatisticData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
