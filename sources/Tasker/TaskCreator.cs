@@ -1,8 +1,7 @@
 ﻿namespace Tasker
 {
-    using System.Threading;
     using ByndyuSoft.Infrastructure.Domain;
-    using Domain.Model;
+    using Domain.Model.Entities;
     using EasyNetQ;
     using JetBrains.Annotations;
     using Messages;
