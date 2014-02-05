@@ -6,14 +6,14 @@
     using Model.Criteria;
     using Model.Entities;
 
-    public class FindStatisticByPlayerIdAndDate : LinqQueryBase<StatisticData, PlayerIdAndDateCriterion, StatisticData>
+    public class FindStatisticByPlayerIdAndDate : LinqQueryBase<StatisticalData, PlayerIdAndDateCriterion, StatisticalData>
     {
         public FindStatisticByPlayerIdAndDate(ILinqProvider linq) : base(linq)
         {}
 
-        public override StatisticData Ask(PlayerIdAndDateCriterion criterion)
+        public override StatisticalData Ask(PlayerIdAndDateCriterion criterion)
         {
-            return Query.OrderByDescending(x => x.Id).SingleOrDefault(x => (x.Date == criterion.Date) && (x.User == criterion.PlayerId));
+            return Query.OrderByDescending(x => x.Id).SingleOrDefault(x => (x.Date == criterion.Date) && (x.PlayerId == criterion.PlayerId));
         }
     }
 }

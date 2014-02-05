@@ -15,7 +15,7 @@
         private IBus _bus;
         private readonly IQueryBuilder _query;
         private readonly IRepository<Period> _periodsRepository;
-        private readonly IRepository<StatisticData> _statisticDataRepository;
+        private readonly IRepository<StatisticalData> _statisticDataRepository;
         private readonly IRepository<DynamicData> _dynamicDataRepository;
         private IEnumerable<Period> _periods;
 
@@ -26,15 +26,15 @@
             IoC.Init();
             _query = IoC.Resolve<IQueryBuilder>();
             _periodsRepository = IoC.Resolve<IRepository<Period>>();
-            _statisticDataRepository = IoC.Resolve<IRepository<StatisticData>>();
+            _statisticDataRepository = IoC.Resolve<IRepository<StatisticalData>>();
             _dynamicDataRepository = IoC.Resolve<IRepository<DynamicData>>();
         }
 
         public void Start()
         {
+            _periods = _periodsRepository.All();
             _bus = RabbitHutch.CreateBus("host=localhost");
             _bus.Subscribe<PlayerInfo>("Wotstat", OnMessage);
-            _periods = _periodsRepository.All();
         }
 
         public new void Stop()
@@ -58,19 +58,19 @@
             
             _periods.ForEach(period =>
             {
-                var oldData = _query.For<StatisticData>().With(new PlayerIdAndDateCriterion(message.PlayerId, nowData.Date.AddDays(-period.DaysCount)));
+                var oldData = _query.For<StatisticalData>().With(new PlayerIdAndDateCriterion(message.PlayerId, nowData.Date.AddDays(-period.DaysCount)));
                 if (oldData == null)
                     return;
                 var res = Subtraction(nowData, oldData);
                 res.Period = period;
-                res.User = message.PlayerId;
+                res.PlayerId = message.PlayerId;
                 _dynamicDataRepository.Add(res);
             });
         }
 
-        private StatisticData Convert(PlayerInfo a)
+        private StatisticalData Convert(PlayerInfo a)
         {
-            return new StatisticData
+            return new StatisticalData
             {
                 BattleAvgXp = a.BattleAvgXp,
                 Battles = a.Battles,
@@ -79,11 +79,11 @@
                 HitsPercents = a.HitsPercents,
                 MaxXp = a.MaxXp,
                 Date = a.Time.Date,
-                User = a.PlayerId,
+                PlayerId = a.PlayerId,
                 WinsPercents = ((double) a.Wins)/(a.Wins + a.Losses + a.Draws)*100
             };
         }
-        private DynamicData Subtraction(StatisticData a, StatisticData b)
+        private DynamicData Subtraction(StatisticalData a, StatisticalData b)
         {
             return new DynamicData
             {
