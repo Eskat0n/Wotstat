@@ -54,7 +54,7 @@
     <Compile Include="Criteria\AccountNameCriterion.cs" />
     <Compile Include="Criteria\AccountPlayerIdCriterion.cs" />
     <Compile Include="Entities\DynamicData.cs" />
-    <Compile Include="Entities\Periods.cs" />
+    <Compile Include="Entities\Period.cs" />
     <Compile Include="Entities\StatisticData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
