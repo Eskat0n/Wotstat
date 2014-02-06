@@ -69,10 +69,16 @@
                     var oldData = _query.For<StatisticalData>().With(new PlayerIdAndDateCriterion(message.PlayerId, nowData.Date.AddDays(-period.DaysCount)));
                     if (oldData == null)
                         return;
-                    var res = Subtraction(nowData, oldData);
-                    res.Period = period;
-                    res.PlayerId = message.PlayerId;
-                    _dynamicDataRepository.Add(res);
+
+                    var wasPeriodData = _query.For<DynamicData>().With(new PlayerIdAndPeriodCriterion(message.PlayerId, period.Id));
+                    if (wasPeriodData != null) {
+                        Subtraction(nowData, oldData, wasPeriodData);
+                        return;
+                    }
+
+                    var nowPeriodData = new DynamicData {Period = period, PlayerId = message.PlayerId};
+                    Subtraction(nowData, oldData, nowPeriodData);
+                    _dynamicDataRepository.Add(nowPeriodData);
                 });
                 unitOfWork.Commit();
             }
@@ -93,18 +99,15 @@
                 WinsPercents = ((double) a.Wins)/(a.Wins + a.Losses + a.Draws)*100
             };
         }
-        private DynamicData Subtraction(StatisticalData a, StatisticalData b)
+        private void Subtraction(StatisticalData a, StatisticalData b, DynamicData res)
         {
-            return new DynamicData
-            {
-                BattleAvgXp = a.BattleAvgXp - b.BattleAvgXp,
-                Battles = a.Battles - b.Battles,
-                DamageDealt = a.DamageDealt - b.DamageDealt,
-                Frags = a.Frags - b.Frags,
-                HitsPercents = a.HitsPercents - b.HitsPercents,
-                WinsPercents = a.WinsPercents - b.WinsPercents,
-                MaxXp = a.MaxXp - b.MaxXp
-            };
+            res.BattleAvgXp = a.BattleAvgXp - b.BattleAvgXp;
+            res.Battles = a.Battles - b.Battles;
+            res.DamageDealt = a.DamageDealt - b.DamageDealt;
+            res.Frags = a.Frags - b.Frags;
+            res.HitsPercents = a.HitsPercents - b.HitsPercents;
+            res.WinsPercents = a.WinsPercents - b.WinsPercents;
+            res.MaxXp = a.MaxXp - b.MaxXp;
         }
 
         protected override void OnStop()

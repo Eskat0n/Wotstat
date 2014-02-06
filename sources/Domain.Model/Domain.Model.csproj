@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criteria\PlayerIdAndDateCriterion.cs" />
+    <Compile Include="Criteria\PlayerIdAndPeriodCriterion.cs" />
     <Compile Include="Criteria\StatisticSearchCriterion.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Criteria\AccountNameCriterion.cs" />
