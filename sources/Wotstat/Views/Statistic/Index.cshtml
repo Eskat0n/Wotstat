@@ -1,8 +1,10 @@
 ﻿@using Domain.Model.Entities
+@using Telerik.Web.Mvc.UI
 @using Wotstat.Application.Boilerplate.Extensions.Web
+@using Wotstat.Application.Statistics.ViewModels
 @model Wotstat.Application.Statistics.ViewModels.StatisticsViewModel
 @{
-    var periods = ((IEnumerable<Period>)ViewBag.Periods).ToList();
+    var periods = ((IEnumerable<Period>) ViewBag.Periods).ToList();
 }          
 <h2>Статистика</h2>          
 <table class="table-bordered table">
@@ -71,3 +73,7 @@
         }
     </tbody>
 </table>
+
+@Html.DropDownList("graphic-period-selection", (IEnumerable<SelectListItem>) ViewBag.GraphicPeriods)
+
+

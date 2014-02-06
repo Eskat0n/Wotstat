@@ -71,7 +71,9 @@
     <Compile Include="Queries\FindAccountByPlayerIdQuery.cs" />
     <Compile Include="Queries\FindLastStatisticQuery.cs" />
     <Compile Include="Queries\FindPlayerDynamicQuery.cs" />
+    <Compile Include="Queries\FindStatisticByDateQuery.cs" />
     <Compile Include="Queries\FindStatisticByPlayerIdAndDate.cs" />
+    <Compile Include="Queries\FindStatisticsByPlayerQuery.cs" />
     <Compile Include="Repositories\SourcedNHibernateRepository.cs" />
     <Compile Include="Sources\NHibernate\Conventions\ColumnNameConvention.cs" />
     <Compile Include="Sources\NHibernate\Conventions\EntityMapConvention.cs" />

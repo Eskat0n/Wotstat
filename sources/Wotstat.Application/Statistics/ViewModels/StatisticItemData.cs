@@ -4,7 +4,13 @@
 
     public class StatisticItemData
     {
+        public StatisticItemData(DateTime date, double value)
+        {
+            Date = date;
+            Value = value;
+        }
+
         public DateTime Date { get; set; }
-        public float Value { get; set; }
+        public double Value { get; set; }
     }
 }

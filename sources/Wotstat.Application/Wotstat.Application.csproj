@@ -38,6 +38,9 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="ByndyuSoft.Infrastructure.Common">
+      <HintPath>..\..\packages\Infrastructure.Common.1.0.13.0\lib\net40\ByndyuSoft.Infrastructure.Common.dll</HintPath>
+    </Reference>
     <Reference Include="ByndyuSoft.Infrastructure.Domain">
       <HintPath>..\..\packages\Infrastructure.Domain.1.1.0\lib\net40\ByndyuSoft.Infrastructure.Domain.dll</HintPath>
     </Reference>
@@ -82,8 +85,14 @@
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>..\..\packages\Mvc3Futures.3.0.20105.0\lib\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="MvcExtensions">
+      <HintPath>..\..\packages\MvcExtensions.2.5.4\lib\net40\MvcExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="NArms.AutoMapper">
       <HintPath>..\..\packages\NArms.AutoMapper.1.1.1.0\lib\net40\NArms.AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="NArms.Core">
+      <HintPath>..\..\packages\NArms.Core.0.1.1.0\lib\net40\NArms.Core.dll</HintPath>
     </Reference>
     <Reference Include="NArms.Windsor">
       <HintPath>..\..\packages\NArms.Windsor.1.3.0\lib\net40\NArms.Windsor.dll</HintPath>
@@ -150,6 +159,9 @@
     <Compile Include="Security\Services\Impl\ContextAccountProvider.cs" />
     <Compile Include="Security\Services\Impl\AutithicationService.cs" />
     <Compile Include="Security\Services\Impl\CustomIdentity.cs" />
+    <Compile Include="Statistics\Metadata\StatisticMetadata.cs" />
+    <Compile Include="Statistics\Services\IGraphicStatisticService.cs" />
+    <Compile Include="Statistics\Services\Impl\GraphicStatisticService.cs" />
     <Compile Include="Statistics\StatisticController.cs" />
     <Compile Include="Statistics\ViewModels\StatisticItemData.cs" />
     <Compile Include="Statistics\ViewModels\StatisticsViewModel.cs" />
