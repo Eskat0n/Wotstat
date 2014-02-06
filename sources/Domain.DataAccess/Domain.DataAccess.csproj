@@ -69,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\FindAccountByName.cs" />
     <Compile Include="Queries\FindAccountByPlayerIdQuery.cs" />
+    <Compile Include="Queries\FindPlayerStatisticsQuery.cs" />
     <Compile Include="Queries\FindStatisticByPlayerIdAndDate.cs" />
     <Compile Include="Repositories\SourcedNHibernateRepository.cs" />
     <Compile Include="Sources\NHibernate\Conventions\ColumnNameConvention.cs" />

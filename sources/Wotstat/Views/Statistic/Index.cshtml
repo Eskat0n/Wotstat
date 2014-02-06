@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Domain.Model.Entities.DynamicData>
+           
+@foreach (var item in Model)
+{
+    <dl>
+        <dt>Процент попаданий</dt>
+        <dd>@item.HitsPercents</dd>
+    </dl>
+    
+    <dl>
+        <dt>Уничтожено техники</dt>
+        <dd>@item.Frags</dd>
+    </dl>
+    
+        <dl>
+        <dt>Средний опыт за бой</dt>
+        <dd>@item.BattleAvgXp</dd>
+    </dl>
+
+    <dl>
+        <dt>Процент побед</dt>
+        <dd>@item.WinsPercents</dd>
+    </dl>
+
+    <dl>
+        <dt>Проведено боёв</dt>
+        <dd>@item.Battles</dd>
+    </dl>
+    
+    <dl>
+        <dt>Нанесено повреждений</dt>
+        <dd>@item.DamageDealt</dd>
+    </dl>
+    
+    <dl>
+        <dt>Уничтожено техники</dt>
+        <dd>@item.Frags</dd>
+    </dl>
+    
+    <dl>
+        <dt>Максимальный опыт за бой</dt>
+        <dd>@item.MaxXp</dd>
+    </dl>
+}
