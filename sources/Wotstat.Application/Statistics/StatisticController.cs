@@ -9,6 +9,7 @@
     using Security.Services;
     using ViewModels;
 
+    [Authorize]
     public class StatisticController : Controller
     {
         public IQueryBuilder Query { get; set; }
