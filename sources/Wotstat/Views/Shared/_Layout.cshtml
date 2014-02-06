@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Telerik.Web.Mvc.UI
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,6 +7,15 @@
     <title>@ViewBag.Title - Wotstat</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @(Html.Telerik().StyleSheetRegistrar()
+                      .DefaultGroup(group => group
+                          .Add("telerik.examples.css")
+                          .Add("telerik.common.css")
+                          .Add("telerik.default.css")
+                          .Add("telerik.rtl.css")
+                          .Combined(true)
+                          .Compress(true))
+    )
 
 </head>
 <body>
@@ -34,7 +44,12 @@
             <p>&copy; @DateTime.Now.Year - Wotstat</p>
         </footer>
     </div>
-
+    
+    @(Html.Telerik().ScriptRegistrar()
+                     .jQuery(false)
+                     .jQueryValidation(false)
+                     .DefaultGroup(group => group
+                     .Compress(true)))
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

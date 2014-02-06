@@ -7,9 +7,9 @@
     using Model.Criteria;
     using Model.Entities;
 
-    public class FindPlayerStatisticsQuery : LinqQueryBase<DynamicData, StatisticSearchCriterion, IEnumerable<DynamicData>>
+    public class FindPlayerDynamicQuery : LinqQueryBase<DynamicData, StatisticSearchCriterion, IEnumerable<DynamicData>>
     {
-        public FindPlayerStatisticsQuery(ILinqProvider linq) : base(linq)
+        public FindPlayerDynamicQuery(ILinqProvider linq) : base(linq)
         {
         }
 

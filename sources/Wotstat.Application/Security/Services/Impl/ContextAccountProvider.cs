@@ -1,11 +1,10 @@
 ﻿namespace Wotstat.Application.Security.Services.Impl
 {
     using System;
-    using System.Security.Principal;
     using System.Web;
-    using Domain.Model.Entities;
     using System.Web.Security;
     using ByndyuSoft.Infrastructure.Domain;
+    using Domain.Model.Entities;
     using JetBrains.Annotations;
 
     public class ContextAccountProvider : IContextAccountProvider
@@ -36,7 +35,7 @@
 
         public bool IsAuthorized()
         {
-            IIdentity identity = HttpContext.Current.User.Identity;
+            var identity = HttpContext.Current.User.Identity;
             return identity.IsAuthenticated;
         }
 

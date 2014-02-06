@@ -1,44 +1,73 @@
-﻿@model IEnumerable<Domain.Model.Entities.DynamicData>
-           
-@foreach (var item in Model)
-{
-    <dl>
-        <dt>Процент попаданий</dt>
-        <dd>@item.HitsPercents</dd>
-    </dl>
-    
-    <dl>
-        <dt>Уничтожено техники</dt>
-        <dd>@item.Frags</dd>
-    </dl>
-    
-        <dl>
-        <dt>Средний опыт за бой</dt>
-        <dd>@item.BattleAvgXp</dd>
-    </dl>
-
-    <dl>
-        <dt>Процент побед</dt>
-        <dd>@item.WinsPercents</dd>
-    </dl>
-
-    <dl>
-        <dt>Проведено боёв</dt>
-        <dd>@item.Battles</dd>
-    </dl>
-    
-    <dl>
-        <dt>Нанесено повреждений</dt>
-        <dd>@item.DamageDealt</dd>
-    </dl>
-    
-    <dl>
-        <dt>Уничтожено техники</dt>
-        <dd>@item.Frags</dd>
-    </dl>
-    
-    <dl>
-        <dt>Максимальный опыт за бой</dt>
-        <dd>@item.MaxXp</dd>
-    </dl>
-}
+﻿@using Domain.Model.Entities
+@using Wotstat.Application.Boilerplate.Extensions.Web
+@model Wotstat.Application.Statistics.ViewModels.StatisticsViewModel
+@{
+    var periods = ((IEnumerable<Period>)ViewBag.Periods).ToList();
+}          
+<h2>Статистика</h2>          
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Текущее значение</th>
+            @foreach (var period in periods)
+            {
+                <th>@period.Name</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+    {
+        <tr>
+            <td>
+                Процент попаданий
+            </td>
+            <td>@Model.LastStatistic.HitsPercents.ToString("0.00")</td>
+            @Html.DynamicDataTableRow(Model.Dynamic, periods, x => x.HitsPercents.ToString("0.00"))
+        </tr>
+        <tr>
+            <td>
+                Уничтожено техники
+            </td>
+            <td>@Model.LastStatistic.Frags</td>
+            @Html.DynamicDataTableRow(Model.Dynamic, periods, x => x.Frags)
+        </tr>
+        <tr>
+            <td>
+                Средний опыт за бой
+            </td>
+            <td>@Model.LastStatistic.BattleAvgXp</td>
+            @Html.DynamicDataTableRow(Model.Dynamic, periods, x => x.BattleAvgXp)
+        </tr>
+        <tr>
+            <td>
+                Процент побед
+            </td>
+            <td>@Model.LastStatistic.WinsPercents.ToString("0.00")</td>
+            @Html.DynamicDataTableRow(Model.Dynamic, periods, x => x.WinsPercents.ToString("0.00"))
+        </tr>
+        <tr>
+            <td>
+                Проведено боёв
+            </td>
+            <td>@Model.LastStatistic.Battles</td>
+            @Html.DynamicDataTableRow(Model.Dynamic, periods, x => x.Battles)
+        </tr>
+        <tr>
+            <td>
+                Нанесено повреждений
+            </td>
+            <td>@Model.LastStatistic.DamageDealt</td>
+            @Html.DynamicDataTableRow(Model.Dynamic, periods, x => x.DamageDealt)
+        </tr>
+        <tr>
+            <td>
+                Максимальный опыт за бой
+            </td>
+            <td>@Model.LastStatistic.MaxXp</td>
+            @Html.DynamicDataTableRow(Model.Dynamic, periods, x => x.MaxXp)
+        </tr>
+    }
+    </tbody>
+</table>
