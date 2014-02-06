@@ -16,9 +16,9 @@
         public override IEnumerable<StatisticalData> Ask(StatisticSearchPeriodCriterion criterion)
         {
             return
-                Query.Where(x => x.PlayerId == criterion.PlayerId
-                                 && x.Date >= criterion.StartDate
-                                 && x.Date <= criterion.EndDate);
+                Query.Where(x => x.PlayerId == criterion.PlayerId);
+            /* && x.Date >= criterion.StartDate
+                                 && x.Date <= criterion.EndDate);*/
         }
     }
 }

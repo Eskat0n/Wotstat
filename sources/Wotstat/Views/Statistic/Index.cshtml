@@ -2,9 +2,10 @@
 @using Telerik.Web.Mvc.UI
 @using Wotstat.Application.Boilerplate.Extensions.Web
 @using Wotstat.Application.Statistics.ViewModels
-@model Wotstat.Application.Statistics.ViewModels.StatisticsViewModel
+@model StatisticsViewModel
 @{
     var periods = ((IEnumerable<Period>) ViewBag.Periods).ToList();
+    var graphPeriods = ((IEnumerable<SelectListItem>) ViewBag.GraphicPeriods).ToList();
 }          
 <h2>Статистика</h2>          
 <table class="table-bordered table">
@@ -74,6 +75,39 @@
     </tbody>
 </table>
 
-@Html.DropDownList("graphic-period-selection", (IEnumerable<SelectListItem>) ViewBag.GraphicPeriods)
+@Html.DropDownList("graphic-period-selection", graphPeriods)
 
+<button class="t-button" onclick="rebind()">Показать</button>
 
+@(Html.Telerik().Chart<StatisticItemData>()
+              .DataBinding(dataBinding => dataBinding.Ajax().Select("GraphicDate", "Statistic"))
+      .Name("Chart")
+       .Series(series => series.ScatterLine(x=>x.DateTicks, x=>x.Value))
+      .YAxis(y => y.Numeric().Title("Значение"))
+          .XAxis(x => x.Numeric().Title("Дата").Labels(y => y.Template("<#= test(value) #>"))))
+      
+@section scripts{
+    <script type="text/javascript">
+
+        function getChart() {
+            return $("#Chart").data("tChart");
+        }
+
+        function rebind() {
+            var val = $('#graphic-period-selection option:selected').val();
+            getChart().rebind({ propertyIndex: val });
+        }
+
+        function test(ticks) {
+            var date = new Date(ticks*1000);
+            return to2DigitFormat(date.getDay()) + "." + to2DigitFormat(date.getMonth()+1) + "." + date.getFullYear();
+        }
+
+        function to2DigitFormat(value) {
+            value += "";
+            if (value.length == 1) value = "0" + value;
+            return value;
+        }
+
+    </script>
+}

@@ -24,11 +24,11 @@
 
         public IRepository<Period> PeriodRepository { get; set; }
 
-        public DynamicFieldItemArray DynamicFieldItems { get; private set; }
+        public StatisticFieldItemArray StatisticFieldItems { get; private set; }
 
         public StatisticController()
         {
-            DynamicFieldItems = new DynamicFieldItemArray()
+            StatisticFieldItems = new StatisticFieldItemArray()
                 .Add("Процент попаданий", x => x.HitsPercents)
                 .Add("Средний опыт за бой", x => x.BattleAvgXp)
                 .Add("Процент побед", x => x.WinsPercents)
@@ -56,21 +56,22 @@
             return View(viewModel);
         }
 
-        public ActionResult GraphicDate(string propertyName, DateTime? startDate, DateTime? endDate)
-        {
+        [HttpPost]
+        public ActionResult GraphicDate(DateTime? startDate, DateTime? endDate, int propertyIndex = 0)
+        {        
             var currentUser = ContextProvider.ContextAccount();
 
-            /*var data = GraphicStatisticService.GetGraphicData(currentUser, x => x.,
+            var data = GraphicStatisticService.GetGraphicData(currentUser, StatisticFieldItems.Functions[propertyIndex],
                 startDate.HasValue ? startDate.Value : DateTime.MinValue,
-                DateTime.MaxValue);*/
+                DateTime.MaxValue).ToArray();
 
-            return /*Json(data);*/ null; // TODO
+            return Json(data);
         }
 
         private void PopulateViewBag()
         {
             ViewBag.Periods = PeriodRepository.All().OrderBy(x => x.DaysCount);
-            ViewBag.GraphicPeriods = GenerateSelectedListItem(DynamicFieldItems.Names);
+            ViewBag.GraphicPeriods = GenerateSelectedListItem(StatisticFieldItems.Names);
         }
 
         private static IEnumerable<SelectListItem> GenerateSelectedListItem(IEnumerable<string> names)
@@ -83,15 +84,15 @@
             }
         }
 
-        public class DynamicFieldItemArray
+        public class StatisticFieldItemArray
         {
-            public DynamicFieldItemArray()
+            public StatisticFieldItemArray()
             {
                 Names = new List<string>();
-                Functions = new List<Func<DynamicData, double>>();
+                Functions = new List<Func<StatisticalData, double>>();
             }
 
-            public DynamicFieldItemArray Add(string name, Func<DynamicData, double> func)
+            public StatisticFieldItemArray Add(string name, Func<StatisticalData, double> func)
             {
                 Names.Add(name);
                 Functions.Add(func);
@@ -99,7 +100,7 @@
             }
 
             public List<string> Names { get; private set; }
-            public List<Func<DynamicData, double>> Functions { get; private set; }
+            public List<Func<StatisticalData, double>> Functions { get; private set; }
         }
     }
 }
