@@ -1,14 +1,10 @@
 ﻿@using Wotstat.Application.Boilerplate.Extensions.Web
 
-@{
-    var redirectUrl = Url.AbsoluteAction("Logon", "Account");
-    var authUrl = string.Format("{0}?application_id={1}&redirect_uri={2}", Html.Config().OAuthUrl, Html.Config().ApplicationId, redirectUrl);
-}
 @if (Html.AccountName() == null)
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <a href="@authUrl">Войти</a>
+            <a href="@ViewBag.OAuthUrl">Войти</a>
         </li>
     </ul>
 }
@@ -16,7 +12,7 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-          Привет  @Html.AccountName()!
+            Привет  @Html.AccountName()!
         </li>
     </ul>
 }

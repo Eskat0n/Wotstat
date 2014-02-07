@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Crawler
+﻿namespace Crawler
 {
-    using System.IO;
-    using System.Threading;
-    using EasyNetQ;
+    using System;
+    using System.ServiceProcess;
+    using NArms.Windsor;
 
     public static class Program
     {
@@ -18,6 +11,7 @@ namespace Crawler
         /// </summary>
         public static void Main()
         {
+            IoC.Init();
             var service = new CrawlerService();
             var servicesToRun = new ServiceBase[]  { service };
             if (Environment.UserInteractive == false)

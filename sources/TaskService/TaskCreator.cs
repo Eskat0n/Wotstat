@@ -1,5 +1,6 @@
 ﻿namespace TaskService
 {
+    using System.Configuration;
     using ByndyuSoft.Infrastructure.Domain;
     using Domain.Model.Entities;
     using EasyNetQ;
@@ -9,6 +10,8 @@
     {
         private readonly IRepository<Account> _accountRepository;
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
+        private readonly string rabbitConnectionString = ConfigurationManager.AppSettings["RabbitMq"];
+
         public TaskCreator(IRepository<Account> accountRepository, IUnitOfWorkFactory unitOfWorkFactory)
         {
             _accountRepository = accountRepository;
@@ -16,7 +19,7 @@
         }
         public void CreateTaskForAllAccounts()
         {
-            var bus = RabbitHutch.CreateBus("host=localhost");
+            var bus = RabbitHutch.CreateBus(rabbitConnectionString);
 
             using (_unitOfWorkFactory.Create())
             {
@@ -30,7 +33,7 @@
 
         public void CreateTaskForAccount(Account account)
         {
-            var bus = RabbitHutch.CreateBus("host=localhost");
+            var bus = RabbitHutch.CreateBus(rabbitConnectionString);
 
             using (_unitOfWorkFactory.Create())
             {

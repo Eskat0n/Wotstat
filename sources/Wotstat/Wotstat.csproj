@@ -733,9 +733,17 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\WargamingApi\WargamingApi.csproj">
+      <Project>{e1894f57-e05f-4306-8fb2-479c89bee875}</Project>
+      <Name>WargamingApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.DataAccess\Domain.DataAccess.csproj">
       <Project>{5d0e4e65-909a-4900-b5e1-25da7e1576b8}</Project>
       <Name>Domain.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
+      <Project>{950addb6-bffd-4c8d-bc16-2110f45a08f5}</Project>
+      <Name>Domain.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Migrations\Migrations.csproj">
       <Project>{c9caae58-ac23-4a9f-b012-8a319255202c}</Project>

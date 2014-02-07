@@ -39,7 +39,7 @@
     </Reference>
     <Reference Include="ByndyuSoft.Infrastructure.Domain, Version=1.0.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Infrastructure.Domain.1.0.13.0\lib\net40\ByndyuSoft.Infrastructure.Domain.dll</HintPath>
+      <HintPath>..\..\packages\Infrastructure.Domain.1.1.0\lib\net40\ByndyuSoft.Infrastructure.Domain.dll</HintPath>
     </Reference>
     <Reference Include="ByndyuSoft.Infrastructure.NHibernate, Version=1.0.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -105,6 +105,10 @@
     <ProjectReference Include="..\Domain.Model\Domain.Model.csproj">
       <Project>{950addb6-bffd-4c8d-bc16-2110f45a08f5}</Project>
       <Name>Domain.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskService\TaskService.csproj">
+      <Project>{400DB0F8-3F79-4D59-9839-704B0B7B21B1}</Project>
+      <Name>TaskService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

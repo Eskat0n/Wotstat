@@ -1,36 +1,34 @@
 ﻿namespace Crawler
 {
-    using System;
-    using System.IO;
+    using System.Configuration;
     using System.ServiceProcess;
-    using System.Threading;
-    using System.Threading.Tasks;
     using EasyNetQ;
     using Messages;
+    using NArms.Windsor;
+    using WargamingApi;
 
     public partial class CrawlerService : ServiceBase
     {
-        private IBus bus;
-        private IPlayerInfoProvider playerInfoProvider;
+        private readonly IWargamingApi _wargamingApi;
+        private IBus _bus;
 
         public CrawlerService()
         {
             InitializeComponent();
+            _wargamingApi = IoC.Resolve<IWargamingApi>();
         }
 
         public void Start()
         {
-            playerInfoProvider = new PlayerInfoProvider();
-
-            bus = RabbitHutch.CreateBus("host=localhost");
-            bus.Subscribe<PlayerInfoRequest>("Wotstat", OnMessage);
+            _bus = RabbitHutch.CreateBus(ConfigurationManager.AppSettings["RabbitMq"]);
+            _bus.Subscribe<PlayerInfoRequest>("Wotstat", OnMessage);
         }
 
         public new void Stop()
         {
             try
             {
-                bus.Dispose();
+                _bus.Dispose();
             }
             catch
             {
@@ -44,8 +42,8 @@
 
         private void OnMessage(PlayerInfoRequest message)
         {
-            var playerInfo = playerInfoProvider.GetPlayerInfo(message.PlayerId);
-            bus.Publish(playerInfo);
+            var playerInfo = _wargamingApi.GetPlayerData(message.PlayerId);
+            _bus.Publish(playerInfo);
         }
 
         protected override void OnStop()

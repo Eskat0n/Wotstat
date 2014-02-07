@@ -1,6 +1,8 @@
 ﻿namespace Calc
 {
+    using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.ServiceProcess;
     using ByndyuSoft.Infrastructure.Domain;
     using Domain.Model.Criteria;
@@ -20,11 +22,9 @@
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private IEnumerable<Period> _periods;
         
-
         public CalcService()
         {
             InitializeComponent();
-
             IoC.Init();
             _query = IoC.Resolve<IQueryBuilder>();
             _periodsRepository = IoC.Resolve<IRepository<Period>>();
@@ -35,11 +35,11 @@
 
         public void Start()
         {
-            using (var unitOfWork = _unitOfWorkFactory.Create())
+            using (_unitOfWorkFactory.Create())
             {
                 _periods = _periodsRepository.All();
             }
-            _bus = RabbitHutch.CreateBus("host=localhost");
+            _bus = RabbitHutch.CreateBus(ConfigurationManager.AppSettings["RabbitMq"]);
             _bus.Subscribe<PlayerInfo>("Wotstat", OnMessage);
         }
 
@@ -61,23 +61,23 @@
         {
             using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                var nowData = Convert(message);
-                _statisticDataRepository.Add(nowData);
+                var newStatisticalData = Convert(message);
+                _statisticDataRepository.Add(newStatisticalData);
                 
                 _periods.ForEach(period =>
                 {
-                    var oldData = _query.For<StatisticalData>().With(new PlayerIdAndDateCriterion(message.PlayerId, nowData.Date.AddDays(-period.DaysCount)));
-                    if (oldData == null)
+                    var oldStatisticalData = _query.For<StatisticalData>().With(new PlayerIdAndDateCriterion(message.PlayerId, newStatisticalData.Date.AddDays(-period.DaysCount)));
+                    if (oldStatisticalData == null)
                         return;
 
-                    var wasPeriodData = _query.For<DynamicData>().With(new PlayerIdAndPeriodCriterion(message.PlayerId, period.Id));
-                    if (wasPeriodData != null) {
-                        Subtraction(nowData, oldData, wasPeriodData);
+                    var oldDynamicData = _query.For<DynamicData>().With(new PlayerIdAndPeriodCriterion(message.PlayerId, period.Id));
+                    if (oldDynamicData != null) {
+                        oldDynamicData.Update(newStatisticalData, oldStatisticalData);
                         return;
                     }
-
-                    var nowPeriodData = new DynamicData {Period = period, PlayerId = message.PlayerId};
-                    Subtraction(nowData, oldData, nowPeriodData);
+                    
+                    var nowPeriodData = new DynamicData(message.PlayerId, period);
+                    nowPeriodData.Update(newStatisticalData, oldStatisticalData);
                     _dynamicDataRepository.Add(nowPeriodData);
                 });
                 unitOfWork.Commit();
@@ -98,16 +98,6 @@
                 PlayerId = a.PlayerId,
                 WinsPercents = ((double) a.Wins)/(a.Wins + a.Losses + a.Draws)*100
             };
-        }
-        private void Subtraction(StatisticalData a, StatisticalData b, DynamicData res)
-        {
-            res.BattleAvgXp = a.BattleAvgXp - b.BattleAvgXp;
-            res.Battles = a.Battles - b.Battles;
-            res.DamageDealt = a.DamageDealt - b.DamageDealt;
-            res.Frags = a.Frags - b.Frags;
-            res.HitsPercents = a.HitsPercents - b.HitsPercents;
-            res.WinsPercents = a.WinsPercents - b.WinsPercents;
-            res.MaxXp = a.MaxXp - b.MaxXp;
         }
 
         protected override void OnStop()

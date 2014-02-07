@@ -1,7 +1,6 @@
 ﻿namespace Wotstat.Infrastructure.Installers
 {
-    using Application.Enviroment;
-    using Application.Enviroment.Impl;
+    using Application;
     using Application.Security.Services;
     using Application.Security.Services.Impl;
     using Application.Statistics.Services;
@@ -9,8 +8,10 @@
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
+    using Domain.Model;
     using JetBrains.Annotations;
     using TaskService;
+    using WargamingApi;
 
 
     [UsedImplicitly]
@@ -24,7 +25,8 @@
                 Component.For<IContextAccountProvider>().ImplementedBy<ContextAccountProvider>().LifestyleTransient(),
                 Component.For<IGraphicStatisticService>().ImplementedBy<GraphicStatisticService>().LifestyleTransient(),
                 Component.For<ITaskCreator>().ImplementedBy<TaskCreator>().LifestyleTransient(),
-                Component.For<IConfig>().ImplementedBy<Config>().LifestyleSingleton()
+                Component.For<IConfig>().ImplementedBy<Config>().LifestyleSingleton(),
+                Component.For<IWargamingApi>().ImplementedBy<WargamingApi>().LifestyleTransient()
             );
         }
     }

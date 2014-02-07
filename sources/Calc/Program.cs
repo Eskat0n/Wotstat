@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calc
+﻿namespace Calc
 {
+    using System;
+    using System.ServiceProcess;
+
     public static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         public static void Main()
         {
             var service = new CalcService();
-            var servicesToRun = new ServiceBase[] { service };
+            var servicesToRun = new ServiceBase[] {service};
             if (Environment.UserInteractive == false)
             {
                 ServiceBase.Run(servicesToRun);

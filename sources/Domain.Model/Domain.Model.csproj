@@ -60,6 +60,7 @@
     <Compile Include="Entities\DynamicData.cs" />
     <Compile Include="Entities\Period.cs" />
     <Compile Include="Entities\StatisticalData.cs" />
+    <Compile Include="IConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

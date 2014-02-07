@@ -106,6 +106,10 @@
       <Project>{1433e803-6e92-4240-89dd-c35b2be96377}</Project>
       <Name>Messages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TaskService\TaskService.csproj">
+      <Project>{400db0f8-3f79-4d59-9839-704b0b7b21b1}</Project>
+      <Name>TaskService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

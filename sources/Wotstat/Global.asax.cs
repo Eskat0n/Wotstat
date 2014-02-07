@@ -28,7 +28,7 @@
             filters.Add(new VersionAttribute());
              */
 
-            filters.Add(new ConfigAttribute());
+            filters.Add(new OAuthUrlAttribute());
             filters.Add(new ContextAccountAttribute());
         }
 
