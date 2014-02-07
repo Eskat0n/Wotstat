@@ -8,6 +8,7 @@
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
     using JetBrains.Annotations;
+    using TaskService;
 
 
     [UsedImplicitly]
@@ -19,7 +20,8 @@
                 // Authentication and authorization
                 Component.For<IAuthenticationService>().ImplementedBy<AutithicationService>().LifestyleTransient(),
                 Component.For<IContextAccountProvider>().ImplementedBy<ContextAccountProvider>().LifestyleTransient(),
-                Component.For<IGraphicStatisticService>().ImplementedBy<GraphicStatisticService>().LifestyleTransient()
+                Component.For<IGraphicStatisticService>().ImplementedBy<GraphicStatisticService>().LifestyleTransient(),
+                Component.For<ITaskCreator>().ImplementedBy<TaskCreator>().LifestyleTransient()
             );
         }
     }

@@ -7,6 +7,7 @@
     using JetBrains.Annotations;
     using NArms.AutoMapper;
     using Security.Services;
+    using TaskService;
     using ViewModels;
 
     public class AccountController : Controller
@@ -19,6 +20,8 @@
 
         [UsedImplicitly]
         public IAuthenticationService AuthenticationService { get; set; }
+
+        public ITaskCreator TaskCreator { get; set; }
 
         [HttpGet]
         public ActionResult LogOn(UserResponseModel userResponseModel)
@@ -33,6 +36,7 @@
             {
                 account = userResponseModel.MapTo(new Account(userResponseModel.Access_Token));
                 AccountRepository.Add(account);
+                TaskCreator.CreateTaskForAccount(account);
             }
             else
             {

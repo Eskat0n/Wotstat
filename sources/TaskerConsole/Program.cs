@@ -1,14 +1,14 @@
 ﻿namespace TaskerConsole
 {
     using NArms.Windsor;
-    using Tasker;
+    using TaskService;
 
     internal class Program
     {
         private static void Main(string[] args)
         {
             IoC.Init();
-            new TaskCreator().Execute();
+            IoC.Resolve<ITaskCreator>().CreateTaskForAllAccounts();
         }
     }
 }

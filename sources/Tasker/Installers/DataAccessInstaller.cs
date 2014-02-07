@@ -1,4 +1,4 @@
-﻿namespace Tasker.Installers
+﻿namespace TaskScheduler.Installers
 {
     using ByndyuSoft.Infrastructure.Domain;
     using ByndyuSoft.Infrastructure.NHibernate;

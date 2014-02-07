@@ -1,8 +1,9 @@
-﻿namespace Tasker
+﻿namespace TaskScheduler
 {
     using NArms.Windsor;
     using NCron.Fluent.Crontab;
     using NCron.Service;
+    using TaskService;
 
     public class Program
     {
@@ -14,7 +15,8 @@
 
         private static void ServiceSetup(ISchedulingService schedulingService)
         {
-            schedulingService.At("10 * * * *").Run(() => new CreateTaskJob());
+            var taskCreator = IoC.Resolve<ITaskCreator>();
+            schedulingService.At("10 * * * *").Run(() => new CreateTaskJob(taskCreator));
         }
     }
 }
