@@ -6,14 +6,16 @@
     using ByndyuSoft.Infrastructure.Domain;
     using Domain.Model.Criteria;
     using Domain.Model.Entities;
+    using JetBrains.Annotations;
     using ViewModels;
 
+    [UsedImplicitly]
     public class GraphicStatisticService : IGraphicStatisticService
     {
         public IQueryBuilder Query { get; set; }
 
 
-        public IEnumerable<StatisticItemData> GetGraphicData(Account account, Func<StatisticalData, double> propertyFunc,
+        public IEnumerable<StatisticItemData> GetGraphicData(Account account, Func<StatisticalData, double> getPropertyValue,
             DateTime startDate, DateTime endDate)
         {
             var statistics = Query
@@ -21,7 +23,7 @@
                 .With(new StatisticSearchPeriodCriterion(account.PlayerId, startDate, endDate));
 
             return statistics != null
-                ? statistics.Select(x => new StatisticItemData(x.Date, propertyFunc(x)))
+                ? statistics.Select(x => new StatisticItemData(x.Date, getPropertyValue(x)))
                 : Enumerable.Empty<StatisticItemData>();
         }
     }

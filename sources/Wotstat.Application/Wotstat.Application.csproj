@@ -147,7 +147,7 @@
     <Compile Include="Accounts\AccountController.cs" />
     <Compile Include="Accounts\Profiles\AccountProfile.cs" />
     <Compile Include="Accounts\ViewModels\UserResponseModel.cs" />
-    <Compile Include="Boilerplate\Extensions\Web\Class1.cs" />
+    <Compile Include="Boilerplate\Extensions\Web\UrlHelperExtensions.cs" />
     <Compile Include="Boilerplate\Extensions\Web\HtmlHelperConfigExtensions.cs" />
     <Compile Include="Boilerplate\Extensions\Web\HtmlHelperAuthExtensions.cs" />
     <Compile Include="Boilerplate\Extensions\Web\HtmlHelperStatisticExtensions.cs" />

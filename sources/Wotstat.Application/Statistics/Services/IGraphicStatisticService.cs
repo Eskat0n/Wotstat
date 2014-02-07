@@ -7,7 +7,7 @@
 
     public interface IGraphicStatisticService
     {
-        IEnumerable<StatisticItemData> GetGraphicData(Account account, Func<StatisticalData, double> propertyFunc,
+        IEnumerable<StatisticItemData> GetGraphicData(Account account, Func<StatisticalData, double> getPropertyValue,
             DateTime startDate, DateTime endDate);
     }
 }

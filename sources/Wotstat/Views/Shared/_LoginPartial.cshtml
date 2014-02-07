@@ -2,7 +2,7 @@
 
 @{
     var redirectUrl = Url.AbsoluteAction("Logon", "Account");
-    var authUrl = string.Format("{0}?application_id={1}&redirect_uri={2}", Html.Config().OAuthUrl, @Html.Config().ApplicationId, redirectUrl);
+    var authUrl = string.Format("{0}?application_id={1}&redirect_uri={2}", Html.Config().OAuthUrl, Html.Config().ApplicationId, redirectUrl);
 }
 @if (Html.AccountName() == null)
 {

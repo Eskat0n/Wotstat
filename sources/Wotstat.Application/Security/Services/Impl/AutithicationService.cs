@@ -35,7 +35,7 @@
 
         public void LogOut()
         {
-            throw new NotImplementedException();
+            FormsAuthentication.SignOut();
         }
     }
 }
