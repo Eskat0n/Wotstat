@@ -178,6 +178,10 @@
       <Project>{950addb6-bffd-4c8d-bc16-2110f45a08f5}</Project>
       <Name>Domain.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TaskService\TaskService.csproj">
+      <Project>{400DB0F8-3F79-4D59-9839-704B0B7B21B1}</Project>
+      <Name>TaskService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll">

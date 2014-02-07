@@ -741,6 +741,10 @@
       <Project>{c9caae58-ac23-4a9f-b012-8a319255202c}</Project>
       <Name>Migrations</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TaskService\TaskService.csproj">
+      <Project>{400DB0F8-3F79-4D59-9839-704B0B7B21B1}</Project>
+      <Name>TaskService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wotstat.Application\Wotstat.Application.csproj">
       <Project>{c95b3522-021f-4bdf-af08-120a5d4c4a68}</Project>
       <Name>Wotstat.Application</Name>
