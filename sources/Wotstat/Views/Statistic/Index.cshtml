@@ -82,25 +82,31 @@
 @(Html.Telerik().Chart<StatisticItemData>()
               .DataBinding(dataBinding => dataBinding.Ajax().Select("GraphicDate", "Statistic"))
       .Name("Chart")
-       .Series(series => series.ScatterLine(x=>x.DateTicks, x=>x.Value))
+           .Series(series => series.ScatterLine(x => x.DateTicks, x => x.Value)
+                        .Tooltip(tooltip => tooltip.Template("<#= currentStatisticDataCaption  + ': ' + value.y + ' (дата: ' + unixToDate(value.x) + ')' #>")))
+
       .YAxis(y => y.Numeric().Title("Значение"))
-          .XAxis(x => x.Numeric().Title("Дата").Labels(y => y.Template("<#= test(value) #>"))))
+          .XAxis(x => x.Numeric().Title("Дата").Labels(y => y.Template("<#= unixToDate(value) #>")))
+      .Tooltip(true).Legend(false))
       
 @section scripts{
     <script type="text/javascript">
+        var currentStatisticDataCaption = $('#graphic-period-selection option:selected').text();
 
         function getChart() {
             return $("#Chart").data("tChart");
         }
 
         function rebind() {
-            var val = $('#graphic-period-selection option:selected').val();
+            var selected = $('#graphic-period-selection option:selected');
+            var val = selected.val();
+            currentStatisticDataCaption = selected.text();
             getChart().rebind({ propertyIndex: val });
         }
 
-        function test(ticks) {
+        function unixToDate(ticks) {
             var date = new Date(ticks*1000);
-            return to2DigitFormat(date.getDay()) + "." + to2DigitFormat(date.getMonth()+1) + "." + date.getFullYear();
+            return to2DigitFormat(date.getDate()) + "." + to2DigitFormat(date.getMonth()+1) + "." + date.getFullYear();
         }
 
         function to2DigitFormat(value) {
