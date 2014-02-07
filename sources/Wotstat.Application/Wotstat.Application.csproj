@@ -167,6 +167,7 @@
     <Compile Include="Statistics\Services\IGraphicStatisticService.cs" />
     <Compile Include="Statistics\Services\Impl\GraphicStatisticService.cs" />
     <Compile Include="Statistics\StatisticController.cs" />
+    <Compile Include="Statistics\ViewModels\StatisticFieldItemArray.cs" />
     <Compile Include="Statistics\ViewModels\StatisticItemData.cs" />
     <Compile Include="Statistics\ViewModels\StatisticsViewModel.cs" />
   </ItemGroup>
