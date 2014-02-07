@@ -3,5 +3,6 @@
     public interface IConfig
     {
         string ApplicationId { get; }
+        string OAuthUrl { get; }
     }
 }

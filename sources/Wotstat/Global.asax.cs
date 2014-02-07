@@ -25,9 +25,10 @@
         private static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
            /* filters.Add(new CustomHandleErrorAttribute());
-            filters.Add(new ConfigAttribute());
             filters.Add(new VersionAttribute());
              */
+
+            filters.Add(new ConfigAttribute());
             filters.Add(new ContextAccountAttribute());
         }
 

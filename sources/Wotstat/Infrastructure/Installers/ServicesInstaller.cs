@@ -1,5 +1,7 @@
 ﻿namespace Wotstat.Infrastructure.Installers
 {
+    using Application.Enviroment;
+    using Application.Enviroment.Impl;
     using Application.Security.Services;
     using Application.Security.Services.Impl;
     using Application.Statistics.Services;
@@ -21,7 +23,8 @@
                 Component.For<IAuthenticationService>().ImplementedBy<AutithicationService>().LifestyleTransient(),
                 Component.For<IContextAccountProvider>().ImplementedBy<ContextAccountProvider>().LifestyleTransient(),
                 Component.For<IGraphicStatisticService>().ImplementedBy<GraphicStatisticService>().LifestyleTransient(),
-                Component.For<ITaskCreator>().ImplementedBy<TaskCreator>().LifestyleTransient()
+                Component.For<ITaskCreator>().ImplementedBy<TaskCreator>().LifestyleTransient(),
+                Component.For<IConfig>().ImplementedBy<Config>().LifestyleSingleton()
             );
         }
     }

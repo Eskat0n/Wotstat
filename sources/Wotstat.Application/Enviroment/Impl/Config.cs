@@ -1,11 +1,17 @@
 ﻿namespace Wotstat.Application.Enviroment.Impl
 {
-    public class Config:IConfig
+    using System.Configuration;
+
+    public class Config : IConfig
     {
         public string ApplicationId
         {
-            get { return "171745d21f7f98fd8878771da1000a31"; }
+            get { return ConfigurationManager.AppSettings["ApplicationId"]; }
         }
 
+        public string OAuthUrl
+        {
+            get { return ConfigurationManager.AppSettings["OAuthUrl"]; }
+        }
     }
 }
