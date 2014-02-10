@@ -27,7 +27,7 @@
         public virtual int Frags { get; protected set; }
         public virtual int MaxXp { get; protected set; }
 
-        public void Update(StatisticalData newData, StatisticalData olData)
+        public virtual void Update(StatisticalData newData, StatisticalData olData)
         {
             BattleAvgXp = newData.BattleAvgXp - olData.BattleAvgXp;
             Battles = newData.Battles - olData.Battles;
