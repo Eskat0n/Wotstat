@@ -2,11 +2,13 @@
 @using Telerik.Web.Mvc.UI
 @using Wotstat.Application.Boilerplate.Extensions.Web
 @using Wotstat.Application.Statistics.ViewModels
-@model StatisticsViewModel
+@model StatisticsViewModel            
+
 @{
     var periods = ((IEnumerable<Period>) ViewBag.Periods).ToList();
     var graphPeriods = ((IEnumerable<SelectListItem>) ViewBag.GraphicPeriods).ToList();
 }          
+
 <h2>Статистика</h2>          
 <table class="table-bordered table">
     <thead>
